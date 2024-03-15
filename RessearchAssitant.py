@@ -40,7 +40,7 @@ scrape_and_summarize_chain = RunnablePassthrough.assign(
 web_search_chain = RunnablePassthrough.assign(
     docs = lambda x: retriever.get_summaries_as_docs(x["question"])
 )| (lambda x: [{"question": x["question"], "doc": u} for u in x["docs"]]) | scrape_and_summarize_chain.map()
-#----------------------
+
 
 
 
